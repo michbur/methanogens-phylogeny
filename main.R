@@ -44,7 +44,6 @@ aln_file <- paste0(tmp_dir, "/aln.fasta")
 
 seq_aln <- try(seq_fun[["read"]](aln_file), silent = TRUE)
 res_tree_cmp <- seq_fun[["phyl"]](seq_aln)
-plot_tree(res_tree_cmp)
 
 svg(paste0(tmp_dir, "/tmp_name.svg"), width = 7, height = 0.45*sum(!is.na(fort_tree[["label"]])), pointsize = 12)
 plot_tree(res_tree_cmp)
