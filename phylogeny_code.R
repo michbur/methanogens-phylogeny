@@ -4,10 +4,9 @@ library(ape)
 library(phangorn)
 library(phytools)
 library(ggtree)
-library(msa)
 
 #For nucleotide sequences
-sek <- readAAStringSet(fasta_file, format="fasta")
+sek <- process_aln_files(readAAStringSet(fasta_file, format="fasta"))
 
 process_aln_files <- function(x) {
   names(slot(x, "ranges")) <- lapply(strsplit(names(slot(x, "ranges")), "|", fixed = TRUE), 
@@ -18,12 +17,12 @@ process_aln_files <- function(x) {
 
 full_aln <- msa(sek, chosen_aln_method)
 
-msaConvert(full_aln, type=c("seqinr::alignment"))
+conv_aln <- msaConvert(full_aln, type=c("seqinr::alignment"))
 
 dir_name <- tempdir()
 
-
-
+write.fasta(sequences=conv_aln[["seq"]], names=seq_aln$nam[i], file.out="seq.aln", open= "a")
+conv_aln()
 
 chosen_file <- "homo.fasta.aln"
 chosen_file <- "glob.fasta.aln"

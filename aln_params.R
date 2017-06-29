@@ -1,4 +1,4 @@
-fasta_file <- "glob.fasta"
+fasta_file <- "mrca_prot.fasta"
 
 # do wyboru: "ClustalW", "ClustalOmega" i "Muscle"
 
