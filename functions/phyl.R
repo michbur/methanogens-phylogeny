@@ -1,4 +1,4 @@
-phangornBoot <- function (tree, BStrees, type = "unrooted", bs.col = "black", 
+phangornBoot <- function(tree, BStrees, type = "unrooted", bs.col = "black", 
                           bs.adj = NULL, p = 50, frame = "none", ...) {
   type <- match.arg(type, c("phylogram", "cladogram", "fan", 
                             "unrooted", "radial"))

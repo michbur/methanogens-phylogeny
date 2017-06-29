@@ -1,19 +1,19 @@
-
 library(msa)
 library(ape)
 library(phangorn)
 library(phytools)
 library(ggtree)
 
+source("phyl_params.R")
+source("./functions/phyl.R")
+
+seq_type <- "aa"
+
+
 #For nucleotide sequences
 sek <- process_aln_files(readAAStringSet(fasta_file, format="fasta"))
 
-process_aln_files <- function(x) {
-  names(slot(x, "ranges")) <- lapply(strsplit(names(slot(x, "ranges")), "|", fixed = TRUE), 
-                                       function(i) paste0(i[1L:4], collapse = "|"))
-  names(slot(x, "ranges")) <- gsub("|[|]+", "|", names(slot(x, "ranges")), fixed = TRUE)
-  x
-}
+
 
 full_aln <- msa(sek, chosen_aln_method)
 
@@ -29,9 +29,9 @@ chosen_file <- "glob.fasta.aln"
 
 # zmienna wewnętrzna, wartości - dna dla DNA i aa dla aminokwasów
 seq_type <- "dna"
-seq_type <- "aa"
 
-source("./functions/phyl.R")
+
+
 
 seq_aln <- try(seq_fun[["read"]](chosen_file), silent = TRUE)
 res_tree_cmp <- seq_fun[["phyl"]](seq_aln)

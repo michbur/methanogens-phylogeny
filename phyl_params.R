@@ -28,6 +28,5 @@ chosen_tree_type = "SN1987"
 # Dla pairwise.deletion checkbox, nazwa: Delete sites with at least one missing data for all sequences
 chosen_deletion <- FALSE
 
-
 # Opcja do wyboru: Bootstrap z okienkiem do wartosci parametru B (możliwe wartości: 100, 200, 300)
 chosen_B <- 100
