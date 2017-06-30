@@ -9,14 +9,14 @@ source("aln_params.R")
 source("phyl_params.R")
 
 # poziomy: aa lub dna
-seq_type <- "aa"
+seq_type <- "dna"
 
 source("./functions/phyl.R")
 source("./functions/aln.R")
 
 tmp_dir <- tempdir()
 
-raw_seqs <- process_aln_files(read_fun("mrca_prot.fasta"))
+raw_seqs <- process_aln_files(read_fun("tmp_name.kwlsfk"))
 
 aln <- msa(raw_seqs, chosen_aln_method)
 
@@ -34,7 +34,7 @@ msaPrettyPrint(aln,
 conv_aln <- msaConvert(aln, type=c("seqinr::alignment"))
 
 # drugi plik do sciagniecia aln.fasta
-write.fasta(sequences = as.list(conv_aln[["seq"]]), names=conv_aln[["seq"]], 
+write.fasta(sequences = as.list(conv_aln[["seq"]]), names=conv_aln[["nam"]], 
             file.out = paste0(tmp_dir, "/aln.fasta"))
 
 # --------------------------------------------------------

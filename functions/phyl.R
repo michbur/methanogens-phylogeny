@@ -93,7 +93,12 @@ plot_tree <- function(phyl_tree) {
   fort_tree[["bootstrap"]][fort_tree[["bootstrap"]] < 50] <- NA
   
   # factor by which x axis should be adjusted to keep names on the plot
-  x_adj <- max(fort_tree[["x"]])*nchar(fort_tree[which.max(fort_tree[["x"]]), "label"])/13
+  x_adj <- if(is.character(fort_tree[["label"]])) {
+    max(fort_tree[["x"]])*nchar(fort_tree[which.max(fort_tree[["x"]]), "label"])/13
+  } else {
+    max(fort_tree[["x"]])
+  }
+  
   
   ggtree(fort_tree, branch.length = "branch.length") +
     #geom_text(hjust = "outward") +
